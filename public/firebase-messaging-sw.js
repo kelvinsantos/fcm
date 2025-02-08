@@ -19,7 +19,7 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage((payload) => {
   console.log("Received background message: ", payload);
   if (Notification.permission === "granted") {
-    new Notification(payload.notification.title, {
+    self.registration.showNotification(payload.notification.title, {
       body: payload.notification.body,
       icon: "/firebase-logo.png",
     });
